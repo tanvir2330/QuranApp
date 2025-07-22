@@ -5,7 +5,7 @@ import com.example.quranapp.model.Translation
 import com.example.quranapp.model.Verse
 import com.example.quranapp.retrofit.QuranApiService
 
-class QuranRepisitory (private val api: QuranApiService) {
+class QuranRepository (private val api: QuranApiService) {
 
     suspend fun getVerse(surah: Int, ayah: Int): List<Verse> {
         return api.getVerses()
