@@ -9,23 +9,23 @@ import com.example.quranapp.model.Verse
 import com.example.quranapp.repository.QuranRepisitory
 import kotlinx.coroutines.launch
 
-class QuranViewModel(private val repository : QuranRepisitory):ViewModel() {
-    // LiveData to hold the list of verses
-    private val _verses = MutableLiveData<Verse>()
-    val verses: LiveData<Verse> get() = _verses
+class QuranViewModel(private val repository: QuranRepisitory) : ViewModel() {
 
-    private val _translations = MutableLiveData<Translation>()
-    val translations: LiveData<Translation> get() = _translations
+    private val _verses = MutableLiveData<List<Verse>>()
+    val verses: LiveData<List<Verse>> get() = _verses
 
-    fun getVerses(){
+    private val _translations = MutableLiveData<List<Translation>>()
+    val translations: LiveData<List<Translation>> get() = _translations
+
+    fun getVerses() {
         viewModelScope.launch {
-            _verses.value = repository.getVerse()
+            _verses.value = repository.getVerses()
         }
     }
+
     fun getTranslations(language: String) {
         viewModelScope.launch {
-            _translations.value = repository.getTranslatedVerse(language)
+            _translations.value = repository.getTranslations(language)
         }
     }
-
 }

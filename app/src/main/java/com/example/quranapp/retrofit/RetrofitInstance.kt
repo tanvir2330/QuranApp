@@ -3,7 +3,7 @@ package com.example.quranapp.retrofit
 object RetrofitInstance {
     private val retrofit by lazy {
         retrofit2.Retrofit.Builder()
-            .baseUrl("https://api.alquran.cloud/") // Replace with your base URL
+            .baseUrl("1. http://api.alquran.cloud/v1/quran/{{edition}}") // Replace with your base URL
             .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
             .build()
     }
